@@ -1,65 +1,77 @@
-import java.util.Scanner;
+# Java Stock Profit Calculator
 
-public class Main {
-    public static void main(String[] args) {
+A beginner-friendly Java console project that calculates stock investment performance for one or more holdings. Built as a practice project connecting AP Computer Science A concepts with an interest in finance.
 
-        Scanner input = new Scanner(System.in);
+## Features
 
-        double totalInvested = 0;
-        double totalValue = 0;
-        String addStock = "yes";
+- Enter a stock name, number of shares, purchase price per share, and current price per share.
+- Calculate the initial investment and current value of each holding.
+- Calculate each holding's profit or loss and percentage return.
+- Add multiple stocks to a portfolio.
+- Display total invested, current portfolio value, total profit or loss, and overall portfolio return.
 
-        System.out.println("STOCK PORTFOLIO CALCULATOR");
+## Java concepts used
 
-        while (addStock.equalsIgnoreCase("yes")) {
+- Variables and data types (`String`, `int`, and `double`)
+- `Scanner` for user input
+- Arithmetic expressions
+- `while` loops
+- `if` statements
+- Formatted output with `System.out.printf`
 
-            System.out.print("\nEnter stock name: ");
-            String stockName = input.nextLine();
+## How to run
 
-            System.out.print("Enter number of shares: ");
-            int shares = input.nextInt();
+You need a Java Development Kit (JDK) installed.
 
-            System.out.print("Enter price paid per share: $");
-            double purchasePrice = input.nextDouble();
+1. Download or clone this repository.
+2. Open a terminal in the project folder.
+3. Compile the program:
 
-            System.out.print("Enter current price per share: $");
-            double currentPrice = input.nextDouble();
+   ```bash
+   javac Main.java
+   ```
 
-            double investment = shares * purchasePrice;
-            double currentValue = shares * currentPrice;
-            double profit = currentValue - investment;
-            double percentReturn = (profit / investment) * 100;
+4. Run it:
 
-            totalInvested = totalInvested + investment;
-            totalValue = totalValue + currentValue;
+   ```bash
+   java Main
+   ```
 
-            System.out.println("\n--- " + stockName + " Report ---");
-            System.out.printf("Initial investment: $%.2f%n", investment);
-            System.out.printf("Current value: $%.2f%n", currentValue);
-            System.out.printf("Profit/Loss: $%.2f%n", profit);
-            System.out.printf("Return: %.2f%%%n", percentReturn);
+You can also paste `Main.java` into a free online Java compiler such as [OnlineGDB](https://www.onlinegdb.com/online_java_compiler).
 
-            input.nextLine(); // Clear the leftover newline
+## Example calculation
 
-            System.out.print("\nWould you like to add another stock? (yes/no): ");
-            addStock = input.nextLine();
-        }
+Suppose you enter 10 shares, a purchase price of `$100.00`, and a current price of `$120.00`.
 
-        double totalProfit = totalValue - totalInvested;
-        double totalReturn = 0;
+- Initial investment: `$1,000.00`
+- Current value: `$1,200.00`
+- Profit: `$200.00`
+- Return: `20.00%`
 
-        if (totalInvested > 0) {
-            totalReturn = (totalProfit / totalInvested) * 100;
-        }
+## Financial formulas
 
-        System.out.println("\n===== TOTAL PORTFOLIO REPORT =====");
-        System.out.printf("Total invested: $%.2f%n", totalInvested);
-        System.out.printf("Current portfolio value: $%.2f%n", totalValue);
-        System.out.printf("Total profit/loss: $%.2f%n", totalProfit);
-        System.out.printf("Total portfolio return: %.2f%%%n", totalReturn);
+- **Initial investment** = shares × purchase price per share
+- **Current value** = shares × current price per share
+- **Profit/loss** = current value − initial investment
+- **Return (%)** = (profit/loss ÷ initial investment) × 100
+- **Portfolio return (%)** = (total profit/loss ÷ total invested) × 100
 
-        System.out.println("\nThank you for using the Stock Portfolio Calculator!");
+If the initial investment is zero, the program displays a return of `0.00%` to avoid division by zero.
 
-        input.close();
-    }
-}
+## Limitations
+
+- Prices are entered manually; the program does not connect to a live stock-price API.
+- It does not include transaction fees, dividends, taxes, or currency conversions.
+- It is an educational calculator, not investment advice.
+- Enter hypothetical or clearly sourced prices when demonstrating the program.
+
+## Possible future improvements
+
+- Save portfolio data to a CSV file.
+- Add input validation for non-numeric entries.
+- Create charts using spreadsheet software.
+- Import historical prices from a reliable data source.
+
+## Author
+
+Created as a personal learning project to explore the connection between Java programming and financial analysis.
